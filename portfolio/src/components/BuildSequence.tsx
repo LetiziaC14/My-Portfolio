@@ -32,7 +32,7 @@ function makeScenes():Scene[]{
  add('Laying out selected work','#work > .section-heading, .work-toolbar');
  bands('Bringing projects to life','.project-card','.project-art, .project-info, .project-card-footer');
  add('Connecting the work','.work-outro');
- bands('Introducing the person behind the code','.about-title > .eyebrow, .about-title > h2, .about-monogram, .about-title > .text-link, .about-body > p');
+ bands('Introducing the person behind the code','.about-title > .eyebrow, .about-title > h2, .about-photo, .about-title > .text-link, .about-body > p');
  bands('Adding experience and skills','.skill-row');
  add('Opening the toolkit','#skills > .section-heading');
  bands('Assembling the technology stack','.tech-card');

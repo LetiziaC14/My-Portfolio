@@ -1,16 +1,63 @@
 import {publicPath} from './paths';
 import type {Project} from './types';
+
+// Personal content for Letizia Cazzaniga. Replace placeholder project links once public.
 export const site = {
-name:'Tasmin Ahmed Oni', shortName:'Tasmin',location:'Dhaka, Bangladesh',role:'Software Engineer',email:'tasminahmedoni909@gmail.com',
-github:'https://github.com/tasminoni',linkedin:'https://www.linkedin.com/in/tasmin-ahmed-oni-968a44255/',resume:publicPath('assets/tasmin-ahmed-resume.pdf'),
-intro:'I turn business requirements into thoughtful digital experiences. Full-stack development, practical problem-solving, and a focus on the people behind the product.',
-about:'With a foundation in Computer Science and business analytics, I connect technical implementation with business goals. My work spans e-commerce platforms, inventory systems, and cross-platform applications — with client communication at the heart of the process.',
-skills:[{name:'Full-stack development',items:['Angular','React','Node.js','NestJS','PHP','JavaScript','Python','Java','HTML & CSS']},{name:'Systems & data',items:['MongoDB','MySQL','RESTful APIs','MVC architecture','Capacitor']},{name:'Beyond the code',items:['Requirements gathering','Client management','Business development','Agile / Scrum','Jira','Windows / Linux']}],
-experience:[{company:'United Group',role:'Junior Software Engineer',dates:'Jun 2026 — Present',detail:'Business unit: Orange Solutions Ltd. (OSL).'},{company:'SoftLab IT',role:'Junior Software Engineer',dates:'Oct 2025 — Apr 2026',detail:'Developed and optimized e-commerce software solutions. Worked directly with clients to align technical implementations with business objectives, and provided technical support and infrastructure guidance.'},{company:'Youth School for Social Entrepreneurs',role:'Intern',dates:'Dec 2023 — May 2024',detail:'Contributed to organizational growth and business development strategies through a virtual internship, collaborating with a dynamic team.'}],
-education:[{school:'BRAC University',degree:'Bachelor’s degree · Computer Science & Engineering',year:'2025',grade:'CGPA 3.62 / 4.0'},{school:'Rajshahi Govt. City College',degree:'Higher Secondary Certificate · Science',year:'2020',grade:'GPA 5.0 / 5.0'}]};
-export const projects:Project[]=[
-{id:'clothigo',title:'Clothigo',category:'Commerce & POS',label:'COMMERCE, CONNECTED.',summary:'One inventory. Every storefront.',description:'A clothing commerce and POS system built around multi-branch inventory, real-time stock tracking, and role-based access.',details:['Server-side pagination, filtering, and sorting for large datasets.','Robust API integration and maintainable Angular architecture.','Environment-based configuration and a clean code structure.'],tools:['Angular','NestJS','MongoDB'],url:'https://www.clothigo.com/',graphic:'commerce',image:publicPath('assets/projects/clothigo.png')},
-{id:'trustpoint',title:'TrustPoint Pharma',category:'Full-stack platforms',label:'CARE MEETS COMMERCE.',summary:'A connected platform for pharma commerce.',description:'A full-stack pharma and e-commerce platform with modular catalog, orders, inventory, payments, and reporting.',details:['Secure online payments and real-time WebSocket notifications.','Automated PDF and Excel reporting.','JWT-based multi-role authentication, rate limiting, notifications, and background jobs.'],tools:['Angular','NestJS','MongoDB'],url:'https://www.trustpointpharma.com/',graphic:'pharma'},
-{id:'boiporibar',title:'Boi-poribar',category:'Cross-platform apps',label:'A WORLD BETWEEN PAGES.',summary:'From finding a book to turning its pages.',description:'A cross-platform e-commerce and digital reading application built with Angular 18 and Capacitor with an SSR-capable architecture.',details:['Dynamic catalog, cart, checkout, and order tracking.','Lazy-loaded modules for improved performance.','EPUB/PDF reading, analytics tracking, and native Android UX enhancements.'],tools:['Angular 18','NestJS','MongoDB','Capacitor'],url:'https://www.boiporibar.com/',graphic:'books'},
-{id:'thesis',title:'Academic Thesis Portal',category:'Academic work',label:'KNOWLEDGE, CONNECTED.',summary:'Academic project · more details coming soon.',description:'Academic Thesis Portal. Project details, technology stack, and links will be added when available.',details:[],tools:[],graphic:'academic',pending:true}
+  name: 'Letizia Cazzaniga',
+  shortName: 'Letizia',
+  location: 'Milan, Italy',
+  role: 'Mathematical Engineer · AI & Healthcare',
+  email: 'letizia.cazzaniga.ds@gmail.com',
+  github: 'https://github.com/LetiziaC14',
+  linkedin: 'https://www.linkedin.com/in/letizia-cazzaniga/',
+  resume: publicPath('assets/Letizia_Cazzaniga_CV.pdf'),
+  intro: 'I turn complex data into practical machine learning solutions, with a focus on healthcare and medical technology.',
+  about: 'I am a Mathematical Engineer with experience in medical image analysis, quantitative modeling, and business data analytics. My work brings together deep learning, statistical reasoning, and practical software development.',
+  skills: [
+    {name: 'Programming & Data Analysis', items: ['Python', 'R', 'C++', 'MATLAB', 'SQL']},
+    {name: 'Machine Learning & Computer Vision', items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'OpenCV', 'Deep Learning', 'Predictive Modeling']},
+    {name: 'Data Visualization & BI', items: ['Power BI', 'Matplotlib', 'Seaborn']},
+    {name: 'Tools & Software', items: ['Microsoft Excel & Office Suite', 'Linux System', 'Git', 'Docker', 'Blender', '3D Slicer ']}
+  ],
+  experience: [
+    {company: 'Huvant', role: 'R&D Engineer', dates: 'Sep 2025 — Present', detail: 'Developed and integrated AI-driven solutions for medical imaging, focusing on deep learning-based anatomical segmentation, MRI and ultrasound image processing, and 3D reconstruction.'},
+    {company: 'Safetec srl', role: 'Data Analyst Intern', dates: 'Feb 2025 — Sep 2025', detail: 'Built and automated Power BI dashboards for business KPI monitoring; cleaned and processed business datasets.'},
+  ],
+  education: [
+    {school: 'Politecnico di Milano', degree: 'MSc in Mathematical Engineering', year: '2023 — 2026', grade: 'Statistical learning · Machine learning · Bayesian statistics'},
+    {school: 'NTNU · Trondheim', degree: 'Erasmus exchange', year: '2023', grade: 'International study experience'},
+    {school: 'HTW Berlin', degree: 'Summer School · Data Science for Sustainable Finance', year: '2025', grade: 'Research project on ESG and credit risk'},
+    {school: 'Politecnico di Milano', degree: 'BSc in Mathematical Engineering', year: '2019 — 2023', grade: 'Mathematics · Numerical analysis · Probability'}
+  ]
+};
+
+export const projects: Project[] = [
+  {id:'kidney-ai',title:'MRI Kidney Segmentation and 3D Reconstruction',category:'Medical Imaging',label:'FROM PIXELS TO ANATOMY.',summary:'AI-assisted anatomical segmentation, 3D modeling and quantitative analysis for policystic kidney disease.',description:'Work on workflows for kidney and cyst segmentation, 3D reconstruction and quantitative anatomical analysis.',details:['Medical imaging preprocessing and segmentation workflows.','Post-processing and anatomical model generation.','Evaluation of model outputs and reconstruction quality.'],tools:['Python','PyTorch','nnU-Net','3D Imaging'],graphic:'pharma',image:publicPath('assets/projects/kidney.png'),privateSource:true},
+  {id:'us-reconstruction',title:'3D Reconstruction of Arm Ultrasound images',category:'3D Reconstruction',label:'SEEING BEYOND 2D.',summary:'Exploring 3D vascular reconstruction from ultrasound.',description:'Research and development of an ultrasound processing workflow for 3D visualization of arm vasculature.',details:['Ultrasound frame preprocessing and vessel segmentation.','Investigation of sensorless reconstruction and temporal tracking.','3D visualization of vascular anatomy.'],tools:['Python','Ultrasound','Computer Vision'],graphic:'commerce',image:publicPath('assets/projects/us-reconstruction.png'),privateSource:true},
+  {id:'neuroscience-networks',title:'Neural Networks · Expansion & Sparseness',category:'Research & ML',label:'HOW NETWORKS RESHAPE INFORMATION.',summary:'Investigating expansion, sparse representations and linear readout in random neural networks.',description:'MSc thesis research investigating Deep Learning models for neuroscience classification tasks, analyzing information expansion and sparsity across different neural network architectures. Conducted in collaboration with the Department of Computing Sciences at Bocconi University.',details:['Studied expansion and sparseness in random feedforward networks using analytical predictions and simulations.','Explored extensions involving non-zero-mean synaptic weights, sparse connections and recurrent rate networks.','Investigated the effect of neural representations on linear readout and classification of noisy patterns.','Research code is being reorganized and documented; results are not presented as a finalized software package.'],tools:['Python','NumPy','Matplotlib','Neural Networks','Computational Neuroscience'],graphic:'academic',image:publicPath('assets/projects/neural_networks.png'),sourceUrl:'https://github.com/LetiziaC14/Neuroscience_Network_Models'},
+  {id:'bayesian-opt',title:'Bayesian Optimization',category:'Research & ML',label:'SEARCH SMARTER.',summary:'Optimizing expensive black-box functions.',description:'Academic project studying Bayesian optimization for mixed-variable black-box problems.',details:['Surrogate modeling for black-box objectives.','Exploration–exploitation with acquisition strategies.','Quantitative evaluation of optimization performance.'],tools:['Python','Gaussian Processes','Optimization'],graphic:'books',image:publicPath('assets/projects/MALIBOO.png'),
+sourceUrl:'https://github.com/LetiziaC14/d-MALIBOO'
+  },
+  {id:'readmission',title:'Hospital Readmission Prediction',category:'Research & ML',label:'DATA FOR HEALTHCARE.',summary:'Predictive modeling for heart failure readmission.',description:'Academic machine learning project investigating hospital readmission within 6 months for heart failure patients.',details:['Data preprocessing and predictive modeling.','Evaluation of model performance.','Interpretation of clinical prediction results.'],tools:['Python','Machine Learning','Healthcare'],graphic:'pharma',image:publicPath('assets/projects/hospital_reamission.png'),
+    sourceUrl:'https://github.com/LetiziaC14/Hospital-Readmission-Prediction'
+  },
+  {
+  id: 'eco-risk-alpha',
+  title: 'Eco-Risk Alpha | ESG & Credit Risk Modeling',
+  category: 'Financial Data Science',
+  label: 'FROM ESG DATA TO FINANCIAL RISK INSIGHTS.',
+  summary: 'Exploring how corporate sustainability performance relates to credit spreads, counterparty risk and a potential green credit premium.',
+  description: 'A quantitative finance project developed during an international Summer School in Sustainable Finance. The study investigates relationships between ESG indicators and credit risk by combining statistical analysis, predictive modeling and Credit Valuation Adjustment (CVA). The objective is to assess whether stronger ESG performance is associated with lower credit risk.',
+  details: [
+    'Exploratory analysis of corporate ESG scores, financial variables and CDS spreads.',
+    'Regression modeling and feature selection to investigate ESG-related credit risk factors.',
+    'Machine learning models for predicting credit spreads, evaluated using cross-validation.',
+    'Computation of Credit Valuation Adjustment (CVA) from default intensities, exposure profiles and discount factors.',
+    'Comparison of observed and model-implied CVA to investigate potential green credit premium effects.'
+  ],
+  tools: ['Python', 'Pandas', 'Scikit-learn', 'Statistical Modeling', 'CVA'],
+  graphic: 'finance',
+  image: publicPath('assets/projects/esg.png'),
+  sourceUrl: 'https://github.com/LetiziaC14/Eco-risk-alpha-'
+},
 ];
