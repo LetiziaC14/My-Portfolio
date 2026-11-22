@@ -1,7 +1,7 @@
 import {useState,useEffect,useRef} from 'react';
 import {createRoot} from 'react-dom/client';
 import {motion,MotionConfig,useScroll,useReducedMotion} from 'framer-motion';
-import {ArrowUpRight,ArrowUp,Menu,X,Search,Download,Github,Linkedin,BookOpen,RotateCcw,Lock} from 'lucide-react';
+import {ArrowUpRight,ArrowUp,Menu,X,Search,Download,Github,Linkedin,BookOpen,RotateCcw,Lock,ChevronLeft,ChevronRight} from 'lucide-react';
 import {site,projects} from './site';
 import type {Project} from './types';
 import {publicPath} from './paths';
@@ -11,6 +11,29 @@ import {PresenceProvider,PresenceLayer} from './components/Presence';
 import {ContactForm} from './components/ContactForm';
 import {BuildSequence} from './components/BuildSequence';
 import './styles.css';
+
+const aboutPhotos=[
+ {src:'assets/foto-1.jpeg',alt:'Letizia outdoors in the mountains'},
+ {src:'assets/foto-2.jpeg',alt:'Letizia enjoying an outdoor moment'},
+ {src:'assets/foto-3.jpeg',alt:'Letizia on an adventure'}
+];
+
+function AboutSlideshow({autoPlay}:{autoPlay:boolean}){
+ const [current,setCurrent]=useState(0);
+ const previous=()=>setCurrent(index=>(index+aboutPhotos.length-1)%aboutPhotos.length);
+ const next=()=>setCurrent(index=>(index+1)%aboutPhotos.length);
+ useEffect(()=>{
+  if(!autoPlay)return;
+  const timer=window.setInterval(next,4500);
+  return()=>window.clearInterval(timer);
+ },[autoPlay]);
+ return <div className="about-slideshow" aria-roledescription="carousel" aria-label="Photos of Letizia">
+  {aboutPhotos.map((photo,index)=><img key={photo.src} className={index===current?'active':''} src={publicPath(photo.src)} alt={photo.alt}/>) }
+  <button className="slideshow-control previous" type="button" onClick={previous} aria-label="Previous photo"><ChevronLeft size={18}/></button>
+  <button className="slideshow-control next" type="button" onClick={next} aria-label="Next photo"><ChevronRight size={18}/></button>
+  <div className="slideshow-dots" aria-label="Choose a photo">{aboutPhotos.map((photo,index)=><button key={photo.src} type="button" className={index===current?'active':''} onClick={()=>setCurrent(index)} aria-label={`Show photo ${index+1}`} aria-current={index===current}/>)}</div>
+ </div>
+}
 
 function App(){
  const reduced=useReducedMotion();
@@ -62,10 +85,10 @@ function App(){
     {!filtered.length&&<div className="empty"><h3>No matching projects</h3><p>Try another search or view all work.</p><button className="button" onClick={()=>{setQuery('');setCategory('All work')}}>Reset filters</button></div>}
     <div className="work-outro"><p>Explore my engineering and research journey.</p><a className="text-link" href={site.github} target="_blank" rel="noopener noreferrer"><Github size={16}/> Find me on GitHub <ArrowUpRight size={16}/></a></div>
    </section>
-   <section className="section about" id="about"><div className="about-title"><p className="eyebrow">02 / ABOUT ME</p><h2>Mathematical mind.<br/><span>Driven by impact.</span></h2><div className="about-photo"><img src={publicPath('assets/foto.jpeg')} alt="Letizia preparing for a skydive"/></div><a className="text-link" href={site.resume} download>Download résumé <Download size={17}/></a></div><div className="about-body"><p className="large-copy">I work at the intersection of mathematics, machine learning, and healthcare.</p><p>{site.about}</p><p className="about-interests">I enjoy translating challenging quantitative problems into tools that can make an impact. My interests include statistical learning, medical image analysis, and data-driven decision-making.</p><div className="skills">{site.skills.map((s,i)=><div className="skill-row" key={s.name}><span className="index">0{i+1}</span><div><h3>{s.name}</h3><div className="tags">{s.items.map(t=><span key={t}>{t}</span>)}</div></div></div>)}</div></div></section>
+   <section className="section about" id="about"><div className="about-title"><p className="eyebrow">02 / ABOUT ME</p><h2>Beyond the code.<br/></h2><AboutSlideshow autoPlay={animate}/><a className="text-link" href={site.resume} download>Download résumé <Download size={17}/></a></div><div className="about-body"><p className="large-copy">Powered by curiosity, data, and a little mountain air.</p><p>{site.about}</p><p className="about-interests">I'm a curious person who loves exploring, learning and challenging myself, both professionally and personally. I enjoy translating challenging quantitative problems into tools that can make an impact. My interests include statistical learning, medical image analysis, and data-driven decision-making. Outside of work, you'll probably find me somewhere in the mountains, discovering a new place, running, skating or planning my next adventure</p><div className="skills">{site.skills.map((s,i)=><div className="skill-row" key={s.name}><span className="index">0{i+1}</span><div><h3>{s.name}</h3><div className="tags">{s.items.map(t=><span key={t}>{t}</span>)}</div></div></div>)}</div></div></section>
    <TechStack animate={animate}/>
    <section className="section experience" id="experience"><div className="section-heading"><div><p className="eyebrow">04 / THE JOURNEY SO FAR</p><h2>Always building.<br/><span>Always learning.</span></h2></div><p>Experience across healthcare engineering,<br/>data analytics, and research.</p></div><div className="timeline">{site.experience.map(e=><article key={e.company} className="experience-item"><div className="experience-summary"><span className="dates">{e.dates}</span><span className="job"><strong>{e.company}</strong><span>{e.role}</span></span></div><p>{e.detail}</p></article>)}</div><div className="education"><p className="eyebrow">THE FOUNDATION / EDUCATION</p><div>{site.education.map(e=><article key={e.school}><span className="dates">{e.year}</span><h3>{e.school}</h3><p>{e.degree}</p><span className="grade">{e.grade}</span></article>)}</div></div></section>
-   <section className="section contact" id="contact"><div className="contact-top"><p className="eyebrow">05 / START A CONVERSATION</p><span>{site.location}</span></div><h2>Let's connect<ArrowUpRight className="contact-arrow" aria-hidden="true"/></h2><div className="contact-bottom"><div><p>A project, an opportunity, or a good conversation.<br/>I’d love to hear from you.</p><a className="contact-email" href={'mailto:'+site.email}>{site.email} <ArrowUpRight size={17}/></a></div><div className="contact-socials"><a href={site.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={17}/> LinkedIn <ArrowUpRight size={15}/></a><a href={site.github} target="_blank" rel="noopener noreferrer"><Github size={17}/> GitHub <ArrowUpRight size={15}/></a></div></div><ContactForm/></section>
+   <section className="section contact" id="contact"><div className="contact-top"><p className="eyebrow">05 / START A CONVERSATION</p><span>{site.location}</span></div><h2>Let's connect<br/>with <span>hello.</span><ArrowUpRight className="contact-arrow" aria-hidden="true"/></h2><div className="contact-bottom"><div><p>A project, an opportunity, or a good conversation.<br/>I’d love to hear from you.</p><a className="contact-email" href={'mailto:'+site.email}>{site.email} <ArrowUpRight size={17}/></a></div><div className="contact-socials"><a href={site.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={17}/> LinkedIn <ArrowUpRight size={15}/></a><a href={site.github} target="_blank" rel="noopener noreferrer"><Github size={17}/> GitHub <ArrowUpRight size={15}/></a></div></div><ContactForm/></section>
   </main>
   <footer><a className="wordmark" href="#home">{site.shortName.toLowerCase()}<span>.</span></a><span>© {new Date().getFullYear()} {site.name}</span><div><span className="footer-note">Built with curiosity and mathematical thinking.</span><a href="#home" aria-label="Back to top" className="icon-button"><ArrowUp size={18}/></a></div></footer>
   <dialog ref={dialog} aria-labelledby="project-title" onCancel={()=>setSelected(null)} onClick={e=>{if(e.target===dialog.current)setSelected(null)}}>{selected&&<div className="dialog-inner"><button autoFocus className="dialog-close icon-button" onClick={()=>setSelected(null)} aria-label="Close project"><X/></button><p className="eyebrow">{selected.category}</p><h2 id="project-title">{selected.title}</h2>{selected.image&&<img className="dialog-image" src={selected.image} alt={selected.title+' project image'} width={1440} height={960}/>}<p className="dialog-description">{selected.description}</p>{selected.details.length>0&&<><h3>Project highlights</h3><ul>{selected.details.map(d=><li key={d}>{d}</li>)}</ul></>}<div className="tags">{selected.tools.map(t=><span key={t}>{t}</span>)}</div><div className="flex flex-wrap gap-3">{selected.url&&<a className="button primary" href={selected.url} target="_blank" rel="noopener noreferrer">Visit live website <ArrowUpRight size={18}/></a>}{selected.sourceUrl&&<a className="button secondary" href={selected.sourceUrl} target="_blank" rel="noopener noreferrer"><Github size={17}/> Source code</a>}</div></div>}</dialog>
