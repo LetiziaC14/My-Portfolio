@@ -12,6 +12,7 @@ export const site = {
   linkedin: 'https://www.linkedin.com/in/letizia-cazzaniga/',
   resume: publicPath('assets/Letizia_Cazzaniga_CV.pdf'),
   intro: 'I turn complex data into practical machine learning solutions, with a focus on healthcare and medical technology.',
+  about: '',
   skills: [
     {name: 'Programming & Data Analysis', items: ['Python', 'R', 'C++', 'MATLAB', 'SQL']},
     {name: 'Machine Learning & Computer Vision', items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'OpenCV', 'Deep Learning', 'Predictive Modeling']},
